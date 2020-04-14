@@ -96,8 +96,8 @@ describe 'vault' do
           end
 
           it {
-            is_expected.to contain_file('/etc/vault/config.json').
-              with_content(%r{"AmbientCapabilities":\s*CAP_IPC_LOCK})
+            is_expected.to contain_file('/etc/systemd/system/vault.service')
+              with_content("AmbientCapabilities=CAP_IPC_LOCK")
           }
         end
 
