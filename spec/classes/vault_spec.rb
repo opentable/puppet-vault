@@ -88,6 +88,19 @@ describe 'vault' do
           }
         end
 
+        context 'AmbientCapabilities config' do
+          let(:params) do
+            {
+              ambient_capabilities: true
+            }
+          end
+
+          it {
+            is_expected.to contain_file('/etc/vault/config.json').
+              with_content(%r{"AmbientCapabilities":\s*CAP_IPC_LOCK})
+          }
+        end
+
         context "default download options" do
           let(:params) {{ :version  => '0.7.0' }}
           it {
