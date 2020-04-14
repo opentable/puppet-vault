@@ -37,12 +37,13 @@ class vault::params {
 
   # These should always be undef as they are optional settings that
   # should not be configured unless explicitly declared.
-  $ha_backend         = undef
-  $disable_cache      = undef
-  $telemetry          = undef
-  $default_lease_ttl  = undef
-  $max_lease_ttl      = undef
-  $disable_mlock      = undef
+  $ha_backend           = undef
+  $disable_cache        = undef
+  $telemetry            = undef
+  $default_lease_ttl    = undef
+  $max_lease_ttl        = undef
+  $disable_mlock        = undef
+  $ambient_capabilities = undef
 
   $manage_service = true
 

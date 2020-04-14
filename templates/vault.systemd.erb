@@ -21,6 +21,11 @@ ProtectHome=read-only
 <% if scope['vault::disable_mlock'] && scope['vault::disable_mlock'] != :undef -%>
 CapabilityBoundingSet=CAP_SYSLOG
 NoNewPrivileges=yes
+<% elsif scope['vault::ambient_capabilities'] && scope['vault::ambient_capabilities'] != :undef -%>
+SecureBits=keep-caps
+AmbientCapabilities=CAP_IPC_LOCK
+CapabilityBoundingSet=CAP_SYSLOG CAP_IPC_LOCK
+NoNewPrivileges=yes
 <% else -%>
 SecureBits=keep-caps
 Capabilities=CAP_IPC_LOCK+ep

@@ -88,6 +88,19 @@ describe 'vault' do
           }
         end
 
+        context 'AmbientCapabilities config' do
+          let(:params) do
+            {
+              ambient_capabilities: true
+            }
+          end
+
+          it {
+            is_expected.to contain_file('/etc/systemd/system/vault.service')
+              with_content("AmbientCapabilities=CAP_IPC_LOCK")
+          }
+        end
+
         context "default download options" do
           let(:params) {{ :version  => '0.7.0' }}
           it {
